@@ -7,10 +7,11 @@ import pickle
 import time
 from tqdm import tqdm
 
-from models.classical_rnn import SimpleRNN
-from models.quantum_rnn import QRNN
-from data.airline_passengers import prepare_dataloaders
-from utils.visualization import plot_predictions
+# Fix imports to use relative paths
+from src.models.classical_rnn import SimpleRNN
+from src.models.quantum_rnn import QRNN
+from src.data.airline_passengers import prepare_dataloaders
+from src.utils.visualization import plot_predictions
 
 def evaluate_model(model_type, model_path, input_size, hidden_size, 
                   n_qubits=5, n_qlayers=1, batch_size=32, seq_length=12):
