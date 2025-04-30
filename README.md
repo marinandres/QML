@@ -8,8 +8,8 @@ This repository implements a **Variational Quantum Circuit** used in a **Quantum
 
 ### 1. Input Encoding
 
-- Each qubit \( q_0 \) to \( q_4 \) is initialized in the ground state \( |0\rangle \).
-- Input values \([0.5, 0.6, 0.7, 0.8, 0.9]\) are encoded using **RX gates**.
+- Each qubit $\( q_0 \) to \( q_4 \)$ is initialized in the ground state $\( |0\rangle \)$.
+- Input values $\([0.5, 0.6, 0.7, 0.8, 0.9]\)$ are encoded using **RX gates**.
 - The RX gate applies a rotation around the X-axis of the Bloch sphere:
 
   \[
