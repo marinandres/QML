@@ -102,24 +102,6 @@ P(|00000\rangle) = \frac{220}{1024} \approx 0.215
 
 ---
 
-## Quantum Concepts Recap
-
-| Concept        | Description |
-|----------------|-------------|
-| **Superposition** | Each qubit is in a mixture of $\( |0\rangle \)$ and $\( |1\rangle \)$ after RX encoding. |
-| **Entanglement** | CNOT gates entangle qubits, allowing complex correlations. |
-| **Measurement**  | The quantum state collapses to a classical outcome based on measurement probabilities. |
-
----
-
-## Key Takeaways
-
-- This quantum circuit functions as a **recurrent unit**, with variational layers learning temporal dependencies.
-- The **input values guide the initial quantum state**, and **trainable gates** shape the quantum evolution.
-- The final bitstring distributions reflect the **learned patterns** in the sequence data, forming the foundation for quantum sequence learning.
-
----
-
 ## References
 
 - *Quantum Recurrent Neural Networks for Sequential Learning*, arXiv: [2302.03244](https://arxiv.org/abs/2302.03244)
