@@ -8,15 +8,15 @@ This repository implements a **Variational Quantum Circuit** used in a **Quantum
 
 ### 1. Input Encoding
 
-- Each qubit $\( q_0 \) to \( q_4 \)$ is initialized in the ground state $\( |0\rangle \)$.
+- Each qubit $\( q_0 \)$ to $\( q_4 \)$ is initialized in the ground state $\( |0\rangle \)$.
 - Input values $\([0.5, 0.6, 0.7, 0.8, 0.9]\)$ are encoded using **RX gates**.
 - The RX gate applies a rotation around the X-axis of the Bloch sphere:
 
-  \[
+  $\[
   RX(\theta) = e^{-i \frac{\theta}{2} X}
-  \]
+  \]$
 
-  where \( X \) is the Pauli-X matrix, and \( \theta \) is proportional to the input value (e.g., \( \theta = 0.5 \) for \( q_0 \)).
+  where $\( X \)$ is the Pauli-X matrix, and $\( \theta \)$ is proportional to the input value (e.g., $\( \theta = 0.5 \) for \( q_0 \)$).
 
 ---
 
@@ -24,16 +24,16 @@ This repository implements a **Variational Quantum Circuit** used in a **Quantum
 
 - Each qubit receives a series of **trainable RX and RZ gates**:
   
-  \[
+  $\[
   RZ(\phi) = e^{-i \frac{\phi}{2} Z}
-  \]
+  \]$
 
-  where \( Z \) is the Pauli-Z matrix, and \( \phi \) is a trainable parameter.
-- For example, qubit \( q_0 \) might be transformed as:
+  where $\( Z \)$ is the Pauli-Z matrix, and $\( \phi \)$ is a trainable parameter.
+- For example, qubit $\( q_0 \)$ might be transformed as:
 
-  \[
+  $\[
   RX(0.1) \rightarrow RZ(0.2) \rightarrow RX(0.3)
-  \]
+  \]$
 
 - These parameters are optimized during training to learn temporal patterns.
 
@@ -48,7 +48,7 @@ This repository implements a **Variational Quantum Circuit** used in a **Quantum
 
 ### 4. Measurement
 
-- After the variational and entangling operations, all qubits are **measured** in the computational basis \( \{ |0\rangle, |1\rangle \} \).
+- After the variational and entangling operations, all qubits are **measured** in the computational basis $\( \{ |0\rangle, |1\rangle \} \)$.
 - Each measurement produces a classical bitstring (e.g., `10010`), representing the collapsed quantum state.
 
 ---
@@ -59,31 +59,31 @@ This repository implements a **Variational Quantum Circuit** used in a **Quantum
 
 The state of the quantum system evolves as:
 
-\[
+$\[
 |\psi\rangle = \sum_{i=0}^{2^n - 1} \alpha_i |i\rangle
-\]
+\]$
 
 where:
-- \( n \) is the number of qubits,
-- \( |i\rangle \) is a basis state (bitstring),
-- \( \alpha_i \) is the complex amplitude of that state,
-- \( |\alpha_i|^2 \) is the probability of measuring \( |i\rangle \).
+- $\( n \)$ is the number of qubits,
+- $\( |i\rangle \)$ is a basis state (bitstring),
+- $\( \alpha_i \)$ is the complex amplitude of that state,
+- $\( |\alpha_i|^2 \)$ is the probability of measuring $\( |i\rangle \)$.
 
 ---
 
 ### 2. Measurement Probabilities
 
-After running the circuit multiple times (shots), we collect bitstring counts. The **probability** of a bitstring \( |i\rangle \) is:
+After running the circuit multiple times (shots), we collect bitstring counts. The **probability** of a bitstring $\( |i\rangle \)$ is:
 
-\[
+$\[
 P(|i\rangle) = \frac{\text{count}(|i\rangle)}{\text{total counts}}
-\]
+\]$
 
 For example, if `00000` is observed 220 times out of 1024 shots:
 
-\[
+$\[
 P(|00000\rangle) = \frac{220}{1024} \approx 0.215
-\]
+\]$
 
 ---
 
@@ -106,7 +106,7 @@ P(|00000\rangle) = \frac{220}{1024} \approx 0.215
 
 | Concept        | Description |
 |----------------|-------------|
-| **Superposition** | Each qubit is in a mixture of \( |0\rangle \) and \( |1\rangle \) after RX encoding. |
+| **Superposition** | Each qubit is in a mixture of $\( |0\rangle \)$ and $\( |1\rangle \)$ after RX encoding. |
 | **Entanglement** | CNOT gates entangle qubits, allowing complex correlations. |
 | **Measurement**  | The quantum state collapses to a classical outcome based on measurement probabilities. |
 
