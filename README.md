@@ -143,3 +143,48 @@ Performance metrics (MSE, RMSE, MAE)
 Inference time statistics
 Prediction vs. actual value plots
 
+## Quantum Circuit Explanation
+
+Explanation of the Quantum Circuit
+The quantum circuit shown in the image is a variational quantum circuit designed for a Quantum Recurrent Neural Network (QRNN). Here's a detailed breakdown of its components:
+
+1. Input Encoding
+Each qubit (q0 to q4) is initialized in the ground state |0⟩.
+The input values [0.5, 0.6, 0.7, 0.8, 0.9] are encoded into the circuit using RX gates. These gates rotate the qubit state around the X-axis of the Bloch sphere by an angle proportional to the input value. Mathematically: [ RX(\theta) = e^{-i \frac{\theta}{2} X} ] where ( X ) is the Pauli-X matrix, and ( \theta ) is the rotation angle (e.g., 0.5 for q0).
+2. Variational Layers
+The circuit has 1 layer of trainable parameters (weights), represented by additional RX and RZ gates. These gates apply rotations around the X-axis and Z-axis, respectively: [ RZ(\phi) = e^{-i \frac{\phi}{2} Z} ] where ( Z ) is the Pauli-Z matrix, and ( \phi ) is the rotation angle.
+Each qubit has its own set of trainable parameters for RX and RZ gates. For example, q0 has RX(0.1), RZ(0.2), and RX(0.3).
+3. Entanglement
+CNOT gates (blue "+" symbols) are used to entangle the qubits. Entanglement creates quantum correlations between qubits, allowing the circuit to capture complex relationships in the data.
+The entanglement pattern in the circuit is a linear chain, where each qubit is entangled with its neighbor.
+4. Measurement
+After the variational layer and entanglement, the qubits are measured in the computational basis (|0⟩ and |1⟩). The measurement results are classical bitstrings (e.g., 10010).
+Explanation of the Measurement Results
+The measurement results represent the frequencies of different bitstrings observed after simulating the circuit. Here's how to interpret them:
+
+1. Quantum State Evolution
+The quantum state of the system evolves as the gates are applied. For example:
+After the RX gates, the state of each qubit is a superposition of |0⟩ and |1⟩.
+The RZ gates and entanglement operations further modify the amplitudes and phases of the quantum state.
+The final state of the system is a superposition of all possible bitstrings (e.g., |00000⟩, |00001⟩, ..., |11111⟩), with complex amplitudes ( \alpha_i ) for each bitstring ( |i⟩ ): [ |\psi⟩ = \sum_{i=0}^{2^n - 1} \alpha_i |i⟩ ] where ( |\alpha_i|^2 ) is the probability of measuring bitstring ( |i⟩ ).
+2. Measurement Probabilities
+When the circuit is measured, the quantum state collapses to one of the bitstrings with a probability proportional to ( |\alpha_i|^2 ).
+For example, the bitstring 00000 was observed 220 times, which suggests it has the highest probability.
+3. Results Breakdown
+The measurement results are:
+
+Each key represents a bitstring (e.g., 10010), and the value represents the number of times it was observed in the simulation.
+The most frequent bitstrings (e.g., 00000, 10001, 11110) correspond to the quantum states with the highest probabilities.
+4. Mathematical Representation
+The measurement results can be summarized as a probability distribution: [ P(|i⟩) = \frac{\text{count}(|i⟩)}{\text{total counts}} ] For example:
+
+Total counts = ( 1024 ) (sum of all values).
+Probability of 00000: [ P(|00000⟩) = \frac{220}{1024} \approx 0.215 ]
+Quantum Terms and Concepts
+Superposition: Each qubit is in a superposition of |0⟩ and |1⟩ after the RX gates.
+Entanglement: The CNOT gates create entanglement, which is essential for capturing correlations in the data.
+Measurement: The quantum state collapses to a classical bitstring upon measurement, with probabilities determined by the amplitudes of the quantum state.
+Key Insights for Presentation
+The circuit encodes input data into quantum states, applies trainable transformations, and measures the results.
+The measurement results reflect the probabilistic nature of quantum mechanics.
+The most frequent bitstrings (e.g., 00000) correspond to the quantum states with the highest probabilities, which are influenced by the input data and trainable parameters.
